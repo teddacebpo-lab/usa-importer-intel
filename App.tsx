@@ -190,26 +190,22 @@ const App: React.FC = () => {
     setError(null);
     abortControllerRef.current = new AbortController();
 
-    try {
-      const [mainResults, similar] = await Promise.allSettled([
-        searchImporters({ query, city, state, industry }),
-        searchSimilarImporters(query || industry)
-      ]);
-      
-      if (mainResults.status === 'fulfilled') {
-        setResults(mainResults.value);
-      } else {
-        setError('Global trade indexing failed. Please try again.');
-      }
+ try {
+  const [results, similar] = await Promise.all([
+    searchImporters({ query, city, state, industry }),
+    searchSimilarImporters(query || industry)
+  ]);
 
-      if (similar.status === 'fulfilled') {
-        setSimilarResults(similar.value);
-      }
-    } catch (err: any) {
-      if (err.name === 'AbortError') {
-          setError("Search operation terminated.");
-      } else {
-          setError(err.message || "Network latency detected.");
+  setResults(results);
+  setSimilarResults(similar);
+
+} catch (err: any) {
+  console.error('Indexing error:', err);
+
+  if (err.name === 'AbortError') {
+    setError('Search operation terminated.');
+  } else {
+    setError(err.message || 'Network latency detected.');
       }
     } finally {
       setIsLoading(false);
