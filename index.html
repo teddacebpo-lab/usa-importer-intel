@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USA Importer Intel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "axios": "https://aistudiocdn.com/axios@^1.13.2",
+    "cheerio": "https://aistudiocdn.com/cheerio@^1.1.2",
+    "p-queue": "https://aistudiocdn.com/p-queue@^9.0.1",
+    "puppeteer": "https://aistudiocdn.com/puppeteer@^24.31.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "path": "https://esm.sh/path@^0.12.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "url": "https://esm.sh/url@^0.11.4",
+    "@vercel/node": "https://esm.sh/@vercel/node@^5.5.25"
+  }
+}
+</script>
+  <style>
+    /* Custom scrollbar for a more modern look */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e293b; /* slate-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #475569; /* slate-600 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b; /* slate-500 */
+    }
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body, html {
+        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      /* Hide everything in the root except the modal */
+      body > #root > div > *:not(.printable-modal-wrapper) {
+        display: none !important;
+      }
+      
+      .printable-modal-wrapper {
+        position: static !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        inset: auto !important;
+        background: white !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+      
+      .printable-content-container {
+        position: static !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        overflow: visible !important;
+        transform: none !important;
+        color: black !important;
+      }
+      
+      /* Hide utility classes marked as no-print */
+      .no-print {
+        display: none !important;
+      }
+      
+      /* Force print block items to show */
+      .print\:block {
+        display: block !important;
+      }
+      
+      .avoid-break {
+        page-break-inside: avoid;
+      }
+
+      /* Adjust colors for print legibility */
+      .printable-content-container * {
+        text-shadow: none !important;
+      }
+      
+      /* Invert dark text to black/dark gray for print */
+      .printable-content-container .text-slate-100,
+      .printable-content-container .text-slate-200,
+      .printable-content-container .text-slate-300,
+      .printable-content-container .text-slate-400,
+      .printable-content-container .text-white {
+        color: #1f2937 !important; /* gray-800 */
+      }
+      
+      /* Keep orange highlights but make them readable or darker */
+      .printable-content-container .text-orange-400,
+      .printable-content-container .text-orange-500 {
+        color: #ea580c !important; /* orange-600 */
+      }
+      
+      /* Borders */
+      .printable-content-container .border-slate-700, 
+      .printable-content-container .border-slate-800 {
+        border-color: #e5e7eb !important; /* gray-200 */
+      }
+      
+      /* Remove dark backgrounds */
+      .printable-content-container [class*="bg-slate-"],
+      .printable-content-container [class*="bg-gradient-"] {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      
+      /* Show SVG icons */
+      .printable-content-container svg {
+        display: inline-block;
+        color: #4b5563 !important; /* gray-600 */
+      }
+      
+      /* Specific override for badges/chips */
+      .printable-content-container .bg-slate-800,
+      .printable-content-container .bg-slate-900 {
+        background-color: #f3f4f6 !important; /* gray-100 */
+        border: 1px solid #d1d5db !important;
+      }
+      
+      /* Make charts visible */
+      .printable-content-container rect[fill="#f97316"] {
+         fill: #ea580c !important;
+      }
+      .printable-content-container path[stroke="#f97316"] {
+         stroke: #ea580c !important;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
